@@ -2,7 +2,11 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 27
+<<<<<<< HEAD
     buildToolsVersion '28.0.3'
+=======
+    buildToolsVersion = '28.0.3'
+>>>>>>> 1ee6840c925ace54f9960422c1b173ce0fad4fbd
 
     defaultConfig {
         applicationId "net.osmtracker"
