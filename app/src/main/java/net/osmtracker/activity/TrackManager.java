@@ -289,20 +289,44 @@ public class TrackManager extends ListActivity {
 	}
 
 
-	private void requestPermissionAndExport(int typeCode){
+	private void requestPermissionAndExport(final int typeCode){
 		if (ContextCompat.checkSelfPermission(this,
 				Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+
+			Log.i(TAG, "Permission to WRITE_EXTERNAL_STORAGE denied");
 
 			// Should we show an explanation?
 			if (ActivityCompat.shouldShowRequestPermissionRationale(this,
 					Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
 
+				Log.i(TAG, "Showing an explanation message to the user");
+
 				// Show an explanation to the user *asynchronously* -- don't block
 				// this thread waiting for the user's response! After the user
 				// sees the explanation, try again to request the permission.
 				// TODO: explain why we need permission.
-				Log.w(TAG, "we should explain why we need write permission_REQUEST");
-				Toast.makeText(this, "To export the GPX trace we need to write on the storage.", Toast.LENGTH_LONG).show();
+
+				AlertDialog.Builder builder = new AlertDialog.Builder(TrackManager.this);
+				builder.setMessage(getResources().getString(R.string.permission_message_write_storage))
+						.setTitle(getResources().getString(R.string.permission_request_dialog_tittle));
+
+				builder.setPositiveButton(getResources().getString(R.string.menu_accept), new OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialogInterface, int i) {
+						Log.i(TAG, "The user has accepted the write permission");
+						ActivityCompat.requestPermissions(TrackManager.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, typeCode);
+					}
+				})
+				.setNegativeButton(getResources().getString(R.string.menu_cancel), new OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialogInterface, int i) {
+						Log.i(TAG, "The user has denied the write permission");
+						Toast.makeText(TrackManager.this, R.string.permission_grant_permission_from_settings, Toast.LENGTH_LONG).show();
+					}
+				});
+
+				AlertDialog dialog = builder.create();
+				dialog.show();
 
 			} else {
 

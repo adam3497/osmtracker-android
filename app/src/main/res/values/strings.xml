@@ -4,6 +4,9 @@
 	<string name="app_name">OSMTracker for Android™</string>
 	<string name="app_short_name">OSMTracker</string>
 	<string name="app_description">Inspired by OSMTracker on Windows Mobile, it allows you to track your journeys, mark significant way points (Voice recording, photos), export them in GPX format for later use with Open Street Map tools like JOSM.</string>
+	<string name="permission_message_write_storage">The permission to write in the external storage is needed to export the GPX files</string>
+	<string name="permission_request_dialog_tittle">Permission Required</string>
+	<string name="permission_grant_permission_from_settings">You can grant this permission from the settings</string>
 
 	<!-- TrackLogger -->
 	<string name="tracklogger">Track logger</string>
@@ -51,6 +54,7 @@
 	<string name="trackmgr_exporting_prepare">Preparing export&#8230;</string>
 	<string name="trackmgr_export_error">Unable to export track: {0}</string>
 	<string name="trackmgr_exportall_confirm">All tracks will be exported, which could take a long time. Are you sure?</string>
+
 
 	<!-- Track Detail -->
 	<string name="trackdetail">Track Details</string>
@@ -100,6 +104,7 @@
 	<string name="menu_continue">Continue track</string>
 	<string name="menu_stopcurrenttrack">Stop current track</string>
 	<string name="menu_save">Save</string>
+	<string name="menu_accept">Accept</string>
 	<string name="menu_cancel">Cancel</string>
 	<string name="menu_export">Export as GPX</string>
 	<string name="menu_osm_upload">OpenStreetMap upload</string>
